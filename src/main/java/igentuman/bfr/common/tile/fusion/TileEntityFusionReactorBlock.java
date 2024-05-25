@@ -2,7 +2,7 @@ package igentuman.bfr.common.tile.fusion;
 
 
 import igentuman.bfr.common.BetterFusionReactor;
-import igentuman.bfr.common.content.fusion.FusionReactorMultiblockData;
+import igentuman.bfr.common.content.fusion.BFReactorMultiblockData;
 import igentuman.bfr.common.registries.BfrBlocks;
 import mekanism.api.providers.IBlockProvider;
 import mekanism.common.inventory.container.MekanismContainer;
@@ -12,7 +12,7 @@ import mekanism.common.tile.prefab.TileEntityMultiblock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class TileEntityFusionReactorBlock extends TileEntityMultiblock<FusionReactorMultiblockData> {
+public class TileEntityFusionReactorBlock extends TileEntityMultiblock<BFReactorMultiblockData> {
 
     public TileEntityFusionReactorBlock(BlockPos pos, BlockState state) {
         this(BfrBlocks.FUSION_REACTOR_FRAME, pos, state);
@@ -23,12 +23,12 @@ public class TileEntityFusionReactorBlock extends TileEntityMultiblock<FusionRea
     }
 
     @Override
-    public FusionReactorMultiblockData createMultiblock() {
-        return new FusionReactorMultiblockData(this);
+    public BFReactorMultiblockData createMultiblock() {
+        return new BFReactorMultiblockData(this);
     }
 
     @Override
-    public MultiblockManager<FusionReactorMultiblockData> getManager() {
+    public MultiblockManager<BFReactorMultiblockData> getManager() {
         return BetterFusionReactor.fusionReactorManager;
     }
 
@@ -38,15 +38,15 @@ public class TileEntityFusionReactorBlock extends TileEntityMultiblock<FusionRea
     }
 
     public void setInjectionRateFromPacket(int rate) {
-        FusionReactorMultiblockData multiblock = getMultiblock();
+        BFReactorMultiblockData multiblock = getMultiblock();
         if (multiblock.isFormed()) {
-            multiblock.setInjectionRate(Math.min(FusionReactorMultiblockData.MAX_INJECTION, Math.max(0, rate - (rate % 2))));
+            multiblock.setInjectionRate(Math.min(BFReactorMultiblockData.MAX_INJECTION, Math.max(0, rate - (rate % 2))));
             markForSave();
         }
     }
 
     public void adjustReactivityFromPacket(float val) {
-        FusionReactorMultiblockData multiblock = getMultiblock();
+        BFReactorMultiblockData multiblock = getMultiblock();
         if (multiblock.isFormed() && multiblock.isBurning()) {
             multiblock.adjustReactivity(val);
             markForSave();
@@ -54,10 +54,10 @@ public class TileEntityFusionReactorBlock extends TileEntityMultiblock<FusionRea
     }
 
     public void addFuelTabContainerTrackers(MekanismContainer container) {
-        SyncMapper.INSTANCE.setup(container, FusionReactorMultiblockData.class, this::getMultiblock, "fuel");
+        SyncMapper.INSTANCE.setup(container, BFReactorMultiblockData.class, this::getMultiblock, "fuel");
     }
 
     public void addHeatTabContainerTrackers(MekanismContainer container) {
-        SyncMapper.INSTANCE.setup(container, FusionReactorMultiblockData.class, this::getMultiblock, "heat");
+        SyncMapper.INSTANCE.setup(container, BFReactorMultiblockData.class, this::getMultiblock, "heat");
     }
 }

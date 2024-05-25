@@ -1,9 +1,7 @@
 package igentuman.bfr.client.gui;
 
 import java.util.Arrays;
-import javax.annotation.Nonnull;
 
-import com.mojang.blaze3d.vertex.PoseStack;
 import mekanism.api.text.EnumColor;
 import mekanism.client.gui.element.tab.GuiEnergyTab;
 import mekanism.common.MekanismLang;
@@ -14,7 +12,7 @@ import mekanism.common.util.text.EnergyDisplay;
 import mekanism.common.util.text.TextUtils;
 import igentuman.bfr.client.gui.element.GuiFusionReactorTab;
 import igentuman.bfr.client.gui.element.GuiFusionReactorTab.FusionReactorTab;
-import igentuman.bfr.common.content.fusion.FusionReactorMultiblockData;
+import igentuman.bfr.common.content.fusion.BFReactorMultiblockData;
 import igentuman.bfr.common.tile.fusion.TileEntityFusionReactorController;
 import mekanism.generators.common.GeneratorsLang;
 import net.minecraft.client.gui.GuiGraphics;
@@ -32,7 +30,7 @@ public class GuiFusionReactorStats extends GuiFusionReactorInfo {
     protected void addGuiElements() {
         super.addGuiElements();
         addRenderableWidget(new GuiEnergyTab(this, () -> {
-            FusionReactorMultiblockData multiblock = tile.getMultiblock();
+            BFReactorMultiblockData multiblock = tile.getMultiblock();
             return Arrays.asList(MekanismLang.STORING.translate(EnergyDisplay.of(multiblock.energyContainer)),
                   GeneratorsLang.PRODUCING_AMOUNT.translate(EnergyDisplay.of(multiblock.getPassiveGeneration(false, true))));
         }));
@@ -44,7 +42,7 @@ public class GuiFusionReactorStats extends GuiFusionReactorInfo {
     @Override
     protected void drawForegroundText(@NotNull GuiGraphics matrix, int mouseX, int mouseY) {
         drawTitleText(matrix, GeneratorsLang.FUSION_REACTOR.translate(), titleLabelY);
-        FusionReactorMultiblockData multiblock = tile.getMultiblock();
+        BFReactorMultiblockData multiblock = tile.getMultiblock();
         if (multiblock.isFormed()) {
             drawString(matrix, GeneratorsLang.REACTOR_PASSIVE.translateColored(EnumColor.DARK_GREEN), 6, 26, titleTextColor());
             drawTextScaledBound(matrix, GeneratorsLang.REACTOR_MIN_INJECTION.translate(multiblock.getMinInjectionRate(false)), 16, 36, titleTextColor(), 156);

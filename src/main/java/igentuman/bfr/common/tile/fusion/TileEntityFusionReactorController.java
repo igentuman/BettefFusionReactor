@@ -4,11 +4,9 @@ import igentuman.bfr.common.config.BetterFusionReactorConfig;
 import mekanism.common.capabilities.Capabilities;
 import mekanism.common.integration.energy.EnergyCompatUtils;
 import mekanism.common.tile.base.SubstanceType;
-import igentuman.bfr.common.content.fusion.FusionReactorMultiblockData;
+import igentuman.bfr.common.content.fusion.BFReactorMultiblockData;
 import igentuman.bfr.common.registries.BfrBlocks;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
@@ -25,7 +23,7 @@ public class TileEntityFusionReactorController extends TileEntityFusionReactorBl
     }
 
     @Override
-    protected boolean onUpdateServer(FusionReactorMultiblockData multiblock) {
+    protected boolean onUpdateServer(BFReactorMultiblockData multiblock) {
         boolean needsPacket = super.onUpdateServer(multiblock);
         setActive(multiblock.isFormed());
         if(multiblock.explodeFlag) {
@@ -38,7 +36,7 @@ public class TileEntityFusionReactorController extends TileEntityFusionReactorBl
 
     @Override
     protected boolean canPlaySound() {
-        FusionReactorMultiblockData multiblock = getMultiblock();
+        BFReactorMultiblockData multiblock = getMultiblock();
         return multiblock.isFormed() && multiblock.isBurning();
     }
 

@@ -24,11 +24,9 @@ import mekanism.common.util.ChemicalUtil;
 import mekanism.common.util.MekanismUtils;
 import mekanism.common.util.WorldUtils;
 import mekanism.common.util.text.BooleanStateDisplay.InputOutput;
-import igentuman.bfr.common.BfrLang;
-import igentuman.bfr.common.content.fusion.FusionReactorMultiblockData;
+import igentuman.bfr.common.content.fusion.BFReactorMultiblockData;
 import igentuman.bfr.common.registries.BfrBlocks;
 import mekanism.generators.common.GeneratorsLang;
-import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionResult;
@@ -86,7 +84,7 @@ public class TileEntityFusionReactorPort extends TileEntityFusionReactorBlock im
     }
 
     @Override
-    protected boolean onUpdateServer(FusionReactorMultiblockData multiblock) {
+    protected boolean onUpdateServer(BFReactorMultiblockData multiblock) {
         boolean needsPacket = super.onUpdateServer(multiblock);
         if (getActive() && multiblock.isFormed()) {
             Set<Direction> directionsToEmit = multiblock.getDirectionsToEmit(getBlockPos());

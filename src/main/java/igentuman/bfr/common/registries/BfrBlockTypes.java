@@ -1,9 +1,6 @@
 package igentuman.bfr.common.registries;
 
-import igentuman.bfr.common.BfrLang;
-import igentuman.bfr.common.config.BetterFusionReactorConfig;
 import igentuman.bfr.common.tile.TileEntityIrradiator;
-import igentuman.bfr.common.tile.TileEntityReactorGlass;
 import igentuman.bfr.common.tile.fusion.*;
 import mekanism.api.math.FloatingLong;
 import mekanism.common.MekanismLang;
@@ -17,8 +14,6 @@ import mekanism.common.content.blocktype.BlockTypeTile.BlockTileBuilder;
 import mekanism.common.content.blocktype.Machine;
 import mekanism.generators.common.GeneratorsLang;
 import mekanism.generators.common.registries.GeneratorsSounds;
-
-import java.util.Set;
 
 
 public class BfrBlockTypes {
@@ -69,10 +64,5 @@ public class BfrBlockTypes {
     public static final BlockTypeTile<TileEntityLaserFocusMatrix> LASER_FOCUS_MATRIX = BlockTileBuilder
             .createBlock(() -> BfrTileEntityTypes.LASER_FOCUS_MATRIX, GeneratorsLang.DESCRIPTION_LASER_FOCUS_MATRIX)
             .with(AttributeMultiblock.EXTERNAL, AttributeMobSpawn.NEVER)
-            .build();
-    // Reactor Glass
-    public static final BlockTypeTile<TileEntityReactorGlass> REACTOR_GLASS = BlockTileBuilder
-            .createBlock(() -> BfrTileEntityTypes.REACTOR_GLASS, GeneratorsLang.DESCRIPTION_REACTOR_GLASS)
-            .with(AttributeMultiblock.STRUCTURAL, AttributeMobSpawn.NEVER)
             .build();
 }

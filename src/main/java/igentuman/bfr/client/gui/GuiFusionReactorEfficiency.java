@@ -1,6 +1,5 @@
 package igentuman.bfr.client.gui;
 
-import com.mojang.blaze3d.vertex.PoseStack;
 import igentuman.bfr.client.gui.element.GuiCustomVerticalBar;
 import igentuman.bfr.client.gui.element.GuiFusionReactorTab;
 import igentuman.bfr.client.gui.element.GuiFusionReactorTab.FusionReactorTab;
@@ -9,10 +8,9 @@ import igentuman.bfr.client.gui.element.button.HelpButton;
 import igentuman.bfr.client.gui.element.button.LaserReadyButton;
 import igentuman.bfr.common.BetterFusionReactor;
 import igentuman.bfr.common.BfrLang;
-import igentuman.bfr.common.content.fusion.FusionReactorMultiblockData;
+import igentuman.bfr.common.content.fusion.BFReactorMultiblockData;
 import igentuman.bfr.common.network.to_server.PacketBfrGuiInteract;
 import igentuman.bfr.common.tile.fusion.TileEntityFusionReactorController;
-import mekanism.api.math.FloatingLong;
 import mekanism.api.text.EnumColor;
 import mekanism.client.gui.element.bar.GuiBar;
 import mekanism.client.gui.element.bar.GuiVerticalPowerBar;
@@ -21,16 +19,13 @@ import mekanism.client.gui.element.button.TranslationButton;
 import mekanism.client.gui.element.tab.GuiEnergyTab;
 import mekanism.common.MekanismLang;
 import mekanism.common.inventory.container.tile.EmptyTileContainer;
-import mekanism.common.util.MekanismUtils;
 import mekanism.common.util.text.EnergyDisplay;
 import mekanism.generators.common.GeneratorsLang;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
 import javax.annotation.Nonnull;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class GuiFusionReactorEfficiency extends GuiFusionReactorInfo {
@@ -48,7 +43,7 @@ public class GuiFusionReactorEfficiency extends GuiFusionReactorInfo {
     @Override
     protected void addGuiElements() {
         super.addGuiElements();
-        FusionReactorMultiblockData multiblock = tile.getMultiblock();
+        BFReactorMultiblockData multiblock = tile.getMultiblock();
         addRenderableWidget(new GuiEnergyTab(this, () -> {
             return Arrays.asList(MekanismLang.STORING.translate(EnergyDisplay.of(multiblock.energyContainer)),
                     GeneratorsLang.PRODUCING_AMOUNT.translate(EnergyDisplay.of(multiblock.getPassiveGeneration(false, true))));
@@ -123,7 +118,7 @@ public class GuiFusionReactorEfficiency extends GuiFusionReactorInfo {
     }
 
     private void updateEnabledButtons() {
-        FusionReactorMultiblockData multiblock = tile.getMultiblock();
+        BFReactorMultiblockData multiblock = tile.getMultiblock();
         reactivityUpButton.active = multiblock.getAdjustment() == 0;
         reactivityDownButton.active = multiblock.getAdjustment() == 0;
         helpButton.active = false;
@@ -135,7 +130,7 @@ public class GuiFusionReactorEfficiency extends GuiFusionReactorInfo {
     @Override
     protected void drawForegroundText(@Nonnull GuiGraphics matrix, int mouseX, int mouseY) {
         drawTitleText(matrix, GeneratorsLang.FUSION_REACTOR.translate(), titleLabelY);
-        FusionReactorMultiblockData multiblock = tile.getMultiblock();
+        BFReactorMultiblockData multiblock = tile.getMultiblock();
 
         drawString(matrix, BfrLang.REACTOR_CR.translate(), 30, 35, titleTextColor());
         drawString(matrix, BfrLang.REACTOR_TR.translate(), 64, 35, titleTextColor());

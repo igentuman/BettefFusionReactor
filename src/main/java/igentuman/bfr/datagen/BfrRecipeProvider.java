@@ -64,7 +64,7 @@ public class BfrRecipeProvider extends BaseRecipeProvider {
                         TripleLine.of(Pattern.EMPTY, GLASS_CHAR, Pattern.EMPTY),
                         TripleLine.of(GLASS_CHAR, Pattern.REDSTONE, GLASS_CHAR),
                         TripleLine.of(Pattern.EMPTY, GLASS_CHAR, Pattern.EMPTY))
-                ).key(GLASS_CHAR, BfrBlocks.REACTOR_GLASS)
+                ).key(GLASS_CHAR, GeneratorsBlocks.REACTOR_GLASS)
                 .key(Pattern.REDSTONE, Tags.Items.STORAGE_BLOCKS_REDSTONE)
                 .build(consumer);
         //Frame
@@ -77,16 +77,7 @@ public class BfrRecipeProvider extends BaseRecipeProvider {
                 .key(Pattern.ALLOY, MekanismTags.Items.ALLOYS_ULTIMATE)
                 .key(Pattern.CONSTANT, MekanismTags.Items.PELLETS_POLONIUM)
                 .build(consumer, BetterFusionReactor.rl("reactor/frame"));
-        //Glass
-        ExtendedShapedRecipeBuilder.shapedRecipe(BfrBlocks.REACTOR_GLASS, 4)
-                .pattern(RecipePattern.createPattern(
-                        TripleLine.of(Pattern.STEEL, Pattern.INGOT, Pattern.STEEL),
-                        TripleLine.of(Pattern.INGOT, GLASS_CHAR, Pattern.INGOT),
-                        TripleLine.of(Pattern.STEEL, Pattern.INGOT, Pattern.STEEL))
-                ).key(GLASS_CHAR, Tags.Items.GLASS)
-                .key(Pattern.INGOT, MekanismTags.Items.PROCESSED_RESOURCES.get(ResourceType.INGOT, PrimaryResource.LEAD))
-                .key(Pattern.STEEL, MekanismItems.ENRICHED_IRON)
-                .build(consumer, BetterFusionReactor.rl("reactor/glass"));
+
         //Port
         ExtendedShapedRecipeBuilder.shapedRecipe(BfrBlocks.FUSION_REACTOR_PORT, 2)
                 .pattern(RecipePattern.createPattern(
@@ -123,7 +114,7 @@ public class BfrRecipeProvider extends BaseRecipeProvider {
                         TripleLine.of(GLASS_CHAR, Pattern.TANK, GLASS_CHAR),
                         TripleLine.of(FRAME_CHAR, 'H', FRAME_CHAR))
                 ).key(Pattern.CIRCUIT, MekanismTags.Items.CIRCUITS_ULTIMATE)
-                .key(GLASS_CHAR, BfrBlocks.REACTOR_GLASS)
+                .key(GLASS_CHAR, GeneratorsBlocks.REACTOR_GLASS)
                 .key(FRAME_CHAR, MekanismBlocks.LASER_TRACTOR_BEAM)
                 .key(Pattern.TANK, MekanismBlocks.BASIC_CHEMICAL_TANK)
                 .key('H', Items.CHEST)

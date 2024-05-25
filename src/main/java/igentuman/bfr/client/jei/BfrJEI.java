@@ -63,8 +63,7 @@ public class BfrJEI implements IModPlugin {
                 GeneratorsBlocks.FUSION_REACTOR_CONTROLLER,
                 GeneratorsBlocks.FUSION_REACTOR_FRAME,
                 GeneratorsBlocks.FUSION_REACTOR_PORT,
-                GeneratorsBlocks.FUSION_REACTOR_LOGIC_ADAPTER,
-                GeneratorsBlocks.REACTOR_GLASS
+                GeneratorsBlocks.FUSION_REACTOR_LOGIC_ADAPTER
         ).stream().map(ItemStack::new).collect(Collectors.toList());
 
         registry.getIngredientManager().removeIngredientsAtRuntime(VanillaTypes.ITEM_STACK, collection);

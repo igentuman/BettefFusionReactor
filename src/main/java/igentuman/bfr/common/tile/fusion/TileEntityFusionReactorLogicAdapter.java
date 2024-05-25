@@ -16,7 +16,7 @@ import mekanism.common.util.NBTUtils;
 import igentuman.bfr.common.BfrLang;
 import igentuman.bfr.common.base.IReactorLogic;
 import igentuman.bfr.common.base.IReactorLogicMode;
-import igentuman.bfr.common.content.fusion.FusionReactorMultiblockData;
+import igentuman.bfr.common.content.fusion.BFReactorMultiblockData;
 import igentuman.bfr.common.registries.BfrBlocks;
 import igentuman.bfr.common.tile.fusion.TileEntityFusionReactorLogicAdapter.FusionReactorLogic;
 import mekanism.generators.common.GeneratorsLang;
@@ -44,7 +44,7 @@ public class TileEntityFusionReactorLogicAdapter extends TileEntityFusionReactor
     }
 
     @Override
-    protected boolean onUpdateServer(FusionReactorMultiblockData multiblock) {
+    protected boolean onUpdateServer(BFReactorMultiblockData multiblock) {
         boolean needsPacket = super.onUpdateServer(multiblock);
         int redstone = checkMode();
         if (redstone != prevRedstoneLevel) {
@@ -67,7 +67,7 @@ public class TileEntityFusionReactorLogicAdapter extends TileEntityFusionReactor
     public void onPowerChange()
     {
         if(isPowered() && !wasPowered()) {
-            FusionReactorMultiblockData multiblock = getMultiblock();
+            BFReactorMultiblockData multiblock = getMultiblock();
             if(multiblock == null || !getMultiblock().isFormed()) {
                 return;
             }
@@ -103,7 +103,7 @@ public class TileEntityFusionReactorLogicAdapter extends TileEntityFusionReactor
         if (isRemote()) {
             return prevRedstoneLevel;
         }
-        FusionReactorMultiblockData multiblock = getMultiblock();
+        BFReactorMultiblockData multiblock = getMultiblock();
         if (multiblock == null || !getMultiblock().isFormed()) {
             return 0;
         }

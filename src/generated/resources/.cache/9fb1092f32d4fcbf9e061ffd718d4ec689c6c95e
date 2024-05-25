@@ -1,4 +1,4 @@
-// 1.20.1	2023-08-01T17:29:49.5659517	Recipes
+// 1.20.1	2024-05-25T10:07:08.322739615	Recipes
 fae370a24e4a4a31861425ba229d8fb9774cdb4f data/bfr/recipes/irradiating/copper.json
 856dbb99e41823ac5f483e2d06671fcfd0e21126 data/bfr/recipes/irradiating/dirty_netherite_scrap.json
 1714a434fad7286e4b748d12a56e08b50f2911b4 data/bfr/recipes/irradiating/gold.json
@@ -12,11 +12,10 @@ ab98b99683525abbffa8d1c24cee64ba008223f5 data/bfr/recipes/irradiating/polonium_f
 f2937755f0fb84a34b7a909b89b4b214f792bec0 data/bfr/recipes/irradiating/tin.json
 8ec207962a48b4859532e91d2e0dde22410ade7c data/bfr/recipes/irradiating/uranium.json
 8a36aaf7bc58f627f1ff4b203da6c2fdabdf1af9 data/bfr/recipes/irradiating/wither_rose.json
-f31a2ee84c7b7573524629a3f1a73e2e25d50ac6 data/bfr/recipes/irradiator.json
-ea37680bfd74f7dc589ca2943897eeb0f0e41f13 data/bfr/recipes/laser_focus_matrix.json
+c67a99bcd99aa8ff188e26db1ec739cef0d28fce data/bfr/recipes/irradiator.json
+cfe0275a2fd61b2eb0b4687636eaefafd3958dfa data/bfr/recipes/laser_focus_matrix.json
 b0ab5835291fe0e90b863e80c9323909ac86db95 data/bfr/recipes/reactor/controller.json
 57fd1dfc268cd94cf937d0a99cf499d54cfca17a data/bfr/recipes/reactor/frame.json
-dd8893ab64e63c2f41a66b3c86484e07cf1fdd2d data/bfr/recipes/reactor/glass.json
 18838162e76eb981b48e9d8a331444c0d7247db9 data/bfr/recipes/reactor/logic_adapter.json
 214961527c23a0497050efd2d9dd2547833695a1 data/bfr/recipes/reactor/port.json
 4816ced29cabedafae51c488ff3d4d16399dfe85 data/bfr/recipes/slurry/from_copperirradiated_ore.json

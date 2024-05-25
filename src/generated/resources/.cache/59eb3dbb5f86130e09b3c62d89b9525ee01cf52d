@@ -1,4 +1,4 @@
-// 1.20.1	2023-12-26T22:48:54.2271366	Loot Tables
+// 1.20.1	2024-05-25T10:07:08.322170932	Loot Tables
 ce785c48e8bb7492607d2379e328ccd82176dd87 data/bfr/loot_tables/blocks/fusion_reactor_controller.json
 eb8a47e25e4f553a57ad53628a9912d8cb39bb90 data/bfr/loot_tables/blocks/fusion_reactor_frame.json
 1899dc994369f5e51cd4fa61f04bcd2cb846a14d data/bfr/loot_tables/blocks/fusion_reactor_logic_adapter.json
@@ -12,4 +12,3 @@ d58145ee3348bcaccaef25030e50ca7400197a47 data/bfr/loot_tables/blocks/irradiated_
 9c909f020ab4ff86303b8e907553fcfbac988a44 data/bfr/loot_tables/blocks/irradiated_uranium_ore.json
 24d17141a68242882903d28388c903329417155c data/bfr/loot_tables/blocks/irradiator.json
 6e8cd7800af0a2877273b5aa74d094fd3c7b762c data/bfr/loot_tables/blocks/laser_focus_matrix.json
-f2ece9120a0b30f38e52aff3111416866cacb926 data/bfr/loot_tables/blocks/reactor_glass.json

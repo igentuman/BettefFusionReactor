@@ -34,7 +34,6 @@ public class BfrLangProvider extends BaseLanguageProvider {
 
 
     private void addBlocks() {
-        add(BfrBlocks.REACTOR_GLASS, "Reactor Glass");
         add(BfrBlocks.LASER_FOCUS_MATRIX, "Laser Focus Matrix");
         add(BfrBlocks.FUSION_REACTOR_CONTROLLER, "Fusion Reactor Controller");
         add(BfrBlocks.FUSION_REACTOR_FRAME, "Fusion Reactor Frame");

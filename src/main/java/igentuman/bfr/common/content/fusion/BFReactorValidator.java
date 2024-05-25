@@ -15,11 +15,12 @@ import mekanism.common.lib.multiblock.Structure.Axis;
 import mekanism.common.lib.multiblock.StructureHelper;
 import igentuman.bfr.common.registries.BfrBlockTypes;
 import igentuman.bfr.common.tile.fusion.TileEntityFusionReactorController;
+import mekanism.generators.common.registries.GeneratorsBlockTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class FusionReactorValidator extends CuboidStructureValidator<FusionReactorMultiblockData> {
+public class BFReactorValidator extends CuboidStructureValidator<BFReactorMultiblockData> {
 
     private static final VoxelCuboid BOUNDS = new VoxelCuboid(5, 5, 5);
     private static final byte[][] ALLOWED_GRID = new byte[][]{
@@ -44,7 +45,7 @@ public class FusionReactorValidator extends CuboidStructureValidator<FusionReact
     }
 
     @Override
-    protected FormationResult validateFrame(FormationProtocol<FusionReactorMultiblockData> ctx, BlockPos pos, BlockState state, CasingType type, boolean needsFrame) {
+    protected FormationResult validateFrame(FormationProtocol<BFReactorMultiblockData> ctx, BlockPos pos, BlockState state, CasingType type, boolean needsFrame) {
         boolean isControllerPos = pos.getY() == cuboid.getMaxPos().getY() && pos.getX() == cuboid.getMinPos().getX() + 2 && pos.getZ() == cuboid.getMinPos().getZ() + 2;
         boolean controller = structure.getTile(pos) instanceof TileEntityFusionReactorController;
         if (isControllerPos && !controller) {
@@ -58,12 +59,12 @@ public class FusionReactorValidator extends CuboidStructureValidator<FusionReact
     @Override
     protected CasingType getCasingType(BlockState state) {
         Block block = state.getBlock();
-        if (BlockType.is(block, BfrBlockTypes.FUSION_REACTOR_FRAME)) {
+        if (BlockType.is(block, BfrBlockTypes.FUSION_REACTOR_FRAME, GeneratorsBlockTypes.FUSION_REACTOR_FRAME)) {
             return CasingType.FRAME;
         } else if (BlockType.is(block, BfrBlockTypes.FUSION_REACTOR_PORT)) {
             return CasingType.VALVE;
         } else if (BlockType.is(block, BfrBlockTypes.FUSION_REACTOR_CONTROLLER,
-              BfrBlockTypes.FUSION_REACTOR_LOGIC_ADAPTER, BfrBlockTypes.LASER_FOCUS_MATRIX)) {
+              BfrBlockTypes.FUSION_REACTOR_LOGIC_ADAPTER, BfrBlockTypes.LASER_FOCUS_MATRIX, GeneratorsBlockTypes.LASER_FOCUS_MATRIX)) {
             return CasingType.OTHER;
         }
         return CasingType.INVALID;

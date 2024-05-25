@@ -1,13 +1,11 @@
 package igentuman.bfr.common.content.fusion;
 
-import java.util.List;
 import mekanism.api.NBTConstants;
 import mekanism.common.lib.multiblock.MultiblockCache;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.item.ItemStack;
 
 
-public class FusionReactorCache extends MultiblockCache<FusionReactorMultiblockData> {
+public class BFReactorCache extends MultiblockCache<BFReactorMultiblockData> {
 
     private double plasmaTemperature = -1;
     private int injectionRate = -1;
@@ -29,20 +27,20 @@ public class FusionReactorCache extends MultiblockCache<FusionReactorMultiblockD
     }
 
     @Override
-    public void merge(MultiblockCache<FusionReactorMultiblockData> mergeCache, RejectContents rejectContents) {
+    public void merge(MultiblockCache<BFReactorMultiblockData> mergeCache, RejectContents rejectContents) {
         super.merge(mergeCache, rejectContents);
-        plasmaTemperature = Math.max(plasmaTemperature, ((FusionReactorCache) mergeCache).plasmaTemperature);
-        currentReactivity = Math.max(currentReactivity, ((FusionReactorCache) mergeCache).currentReactivity);
-        targetReactivity = Math.max(targetReactivity, ((FusionReactorCache) mergeCache).targetReactivity);
-        adjustment = Math.max(adjustment, ((FusionReactorCache) mergeCache).adjustment);
-        errorLevel = Math.max(errorLevel, ((FusionReactorCache) mergeCache).errorLevel);
-        injectionRate = Math.max(injectionRate, ((FusionReactorCache) mergeCache).injectionRate);
-        laserCountdown = Math.min(laserCountdown, ((FusionReactorCache) mergeCache).laserCountdown);
-        burning |= ((FusionReactorCache) mergeCache).burning;
+        plasmaTemperature = Math.max(plasmaTemperature, ((BFReactorCache) mergeCache).plasmaTemperature);
+        currentReactivity = Math.max(currentReactivity, ((BFReactorCache) mergeCache).currentReactivity);
+        targetReactivity = Math.max(targetReactivity, ((BFReactorCache) mergeCache).targetReactivity);
+        adjustment = Math.max(adjustment, ((BFReactorCache) mergeCache).adjustment);
+        errorLevel = Math.max(errorLevel, ((BFReactorCache) mergeCache).errorLevel);
+        injectionRate = Math.max(injectionRate, ((BFReactorCache) mergeCache).injectionRate);
+        laserCountdown = Math.min(laserCountdown, ((BFReactorCache) mergeCache).laserCountdown);
+        burning |= ((BFReactorCache) mergeCache).burning;
     }
 
     @Override
-    public void apply(FusionReactorMultiblockData data) {
+    public void apply(BFReactorMultiblockData data) {
         super.apply(data);
         if (plasmaTemperature >= 0) {
             data.plasmaTemperature = plasmaTemperature;
@@ -58,7 +56,7 @@ public class FusionReactorCache extends MultiblockCache<FusionReactorMultiblockD
     }
 
     @Override
-    public void sync(FusionReactorMultiblockData data) {
+    public void sync(BFReactorMultiblockData data) {
         super.sync(data);
         plasmaTemperature = data.plasmaTemperature;
         injectionRate = data.getInjectionRate();

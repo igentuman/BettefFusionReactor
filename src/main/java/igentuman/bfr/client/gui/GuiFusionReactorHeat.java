@@ -1,10 +1,8 @@
 package igentuman.bfr.client.gui;
 
-import java.util.Arrays;
 import java.util.List;
 import javax.annotation.Nonnull;
 
-import com.mojang.blaze3d.vertex.PoseStack;
 import mekanism.client.gui.element.gauge.GaugeType;
 import mekanism.client.gui.element.gauge.GuiEnergyGauge;
 import mekanism.client.gui.element.gauge.GuiFluidGauge;
@@ -22,7 +20,7 @@ import mekanism.common.util.UnitDisplayUtils.TemperatureUnit;
 import mekanism.common.util.text.EnergyDisplay;
 import igentuman.bfr.client.gui.element.GuiFusionReactorTab;
 import igentuman.bfr.client.gui.element.GuiFusionReactorTab.FusionReactorTab;
-import igentuman.bfr.common.content.fusion.FusionReactorMultiblockData;
+import igentuman.bfr.common.content.fusion.BFReactorMultiblockData;
 import igentuman.bfr.common.tile.fusion.TileEntityFusionReactorController;
 import mekanism.generators.common.GeneratorsLang;
 import net.minecraft.client.gui.GuiGraphics;
@@ -43,7 +41,7 @@ public class GuiFusionReactorHeat extends GuiFusionReactorInfo {
     protected void addGuiElements() {
         super.addGuiElements();
         addRenderableWidget(new GuiEnergyTab(this, () -> {
-            FusionReactorMultiblockData multiblock = tile.getMultiblock();
+            BFReactorMultiblockData multiblock = tile.getMultiblock();
             return List.of(MekanismLang.STORING.translate(EnergyDisplay.of(multiblock.energyContainer)),
                     GeneratorsLang.PRODUCING_AMOUNT.translate(EnergyDisplay.of(multiblock.getPassiveGeneration(false, true))));
         }));
@@ -69,7 +67,7 @@ public class GuiFusionReactorHeat extends GuiFusionReactorInfo {
             }
         }, GaugeType.STANDARD, this, 7, 50));
         addRenderableWidget(new GuiProgress(() -> {
-            FusionReactorMultiblockData multiblock = tile.getMultiblock();
+            BFReactorMultiblockData multiblock = tile.getMultiblock();
             return multiblock.getLastPlasmaTemp() > multiblock.getLastCaseTemp();
         }, ProgressType.SMALL_RIGHT, this, 29, 76));
         addRenderableWidget(new GuiNumberGauge(new INumberInfoHandler() {
@@ -95,7 +93,7 @@ public class GuiFusionReactorHeat extends GuiFusionReactorInfo {
         }, GaugeType.STANDARD, this, 61, 50));
         addRenderableWidget(new GuiProgress(() -> tile.getMultiblock().getCaseTemp() > 0, ProgressType.SMALL_RIGHT, this, 83, 61));
         addRenderableWidget(new GuiProgress(() -> {
-            FusionReactorMultiblockData multiblock = tile.getMultiblock();
+            BFReactorMultiblockData multiblock = tile.getMultiblock();
             return multiblock.getCaseTemp() > 0 && !multiblock.liquidCoolantTank.isEmpty() && multiblock.hotCoolantTank.getStored() < multiblock.hotCoolantTank.getCapacity();
         }, ProgressType.SMALL_RIGHT, this, 83, 91));
         addRenderableWidget(new GuiFluidGauge(() -> tile.getMultiblock().liquidCoolantTank, () -> tile.getFluidTanks(null), GaugeType.SMALL, this, 115, 84));

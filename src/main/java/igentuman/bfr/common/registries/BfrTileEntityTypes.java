@@ -4,15 +4,11 @@ import igentuman.bfr.common.tile.TileEntityIrradiator;
 import mekanism.common.registration.impl.TileEntityTypeDeferredRegister;
 import mekanism.common.registration.impl.TileEntityTypeRegistryObject;
 import igentuman.bfr.common.BetterFusionReactor;
-import igentuman.bfr.common.tile.TileEntityReactorGlass;
 import igentuman.bfr.common.tile.fusion.TileEntityFusionReactorBlock;
 import igentuman.bfr.common.tile.fusion.TileEntityFusionReactorController;
 import igentuman.bfr.common.tile.fusion.TileEntityFusionReactorLogicAdapter;
 import igentuman.bfr.common.tile.fusion.TileEntityFusionReactorPort;
 import igentuman.bfr.common.tile.fusion.TileEntityLaserFocusMatrix;
-import mekanism.common.registries.MekanismBlocks;
-import mekanism.common.tile.machine.TileEntityCrusher;
-import mekanism.generators.common.registries.GeneratorsBlocks;
 
 public class BfrTileEntityTypes {
 
@@ -23,7 +19,6 @@ public class BfrTileEntityTypes {
     //Misc
     public static final TileEntityTypeRegistryObject<TileEntityIrradiator> IRRADIATOR = TILE_ENTITY_TYPES.register(BfrBlocks.IRRADIATOR, TileEntityIrradiator::new);
 
-    public static final TileEntityTypeRegistryObject<TileEntityReactorGlass> REACTOR_GLASS = TILE_ENTITY_TYPES.register(BfrBlocks.REACTOR_GLASS, TileEntityReactorGlass::new);
     //Fusion Reactor
     public static final TileEntityTypeRegistryObject<TileEntityFusionReactorController> FUSION_REACTOR_CONTROLLER = TILE_ENTITY_TYPES.register(BfrBlocks.FUSION_REACTOR_CONTROLLER, TileEntityFusionReactorController::new);
 

@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "G": {
-      "item": "bfr:reactor_glass"
+      "item": "mekanismgenerators:reactor_glass"
     },
     "R": {
       "tag": "forge:storage_blocks/redstone"

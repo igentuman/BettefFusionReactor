@@ -5,7 +5,7 @@ import mekanism.api.lasers.ILaserReceptor;
 import mekanism.api.math.FloatingLong;
 import mekanism.common.capabilities.Capabilities;
 import mekanism.common.capabilities.resolver.BasicCapabilityResolver;
-import igentuman.bfr.common.content.fusion.FusionReactorMultiblockData;
+import igentuman.bfr.common.content.fusion.BFReactorMultiblockData;
 import igentuman.bfr.common.registries.BfrBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionResult;
@@ -21,7 +21,7 @@ public class TileEntityLaserFocusMatrix extends TileEntityFusionReactorBlock imp
 
     @Override
     public void receiveLaserEnergy(@Nonnull FloatingLong energy) {
-        FusionReactorMultiblockData multiblock = getMultiblock();
+        BFReactorMultiblockData multiblock = getMultiblock();
         if (multiblock.isFormed()) {
             multiblock.addTemperatureFromEnergyInput(energy);
             multiblock.processLaserShoot(energy);
@@ -31,7 +31,7 @@ public class TileEntityLaserFocusMatrix extends TileEntityFusionReactorBlock imp
     @Override
     public InteractionResult onRightClick(Player player) {
         if (!isRemote() && player.isCreative()) {
-            FusionReactorMultiblockData multiblock = getMultiblock();
+            BFReactorMultiblockData multiblock = getMultiblock();
             if (multiblock.isFormed()) {
                 multiblock.setPlasmaTemp(1_000_000_000);
                 return InteractionResult.sidedSuccess(isRemote());

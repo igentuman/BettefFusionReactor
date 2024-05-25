@@ -3,7 +3,7 @@ package igentuman.bfr.client.render;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
-import igentuman.bfr.common.content.fusion.FusionReactorMultiblockData;
+import igentuman.bfr.common.content.fusion.BFReactorMultiblockData;
 import igentuman.bfr.common.tile.fusion.TileEntityFusionReactorController;
 import mekanism.api.annotations.NothingNullByDefault;
 import mekanism.api.text.EnumColor;
@@ -20,7 +20,7 @@ import net.minecraft.util.profiling.ProfilerFiller;
 import net.minecraft.world.phys.Vec3;
 
 @NothingNullByDefault
-public class RenderFusionReactor extends MultiblockTileEntityRenderer<FusionReactorMultiblockData, TileEntityFusionReactorController> {
+public class RenderFusionReactor extends MultiblockTileEntityRenderer<BFReactorMultiblockData, TileEntityFusionReactorController> {
 
     private static final double SCALE = 100_000_000;
     private final ModelEnergyCore core;
@@ -31,8 +31,8 @@ public class RenderFusionReactor extends MultiblockTileEntityRenderer<FusionReac
     }
 
     @Override
-    protected void render(TileEntityFusionReactorController tile, FusionReactorMultiblockData multiblock, float partialTicks, PoseStack matrix, MultiBufferSource renderer,
-          int light, int overlayLight, ProfilerFiller profiler) {
+    protected void render(TileEntityFusionReactorController tile, BFReactorMultiblockData multiblock, float partialTicks, PoseStack matrix, MultiBufferSource renderer,
+                          int light, int overlayLight, ProfilerFiller profiler) {
         long scaledTemp = Math.round(multiblock.getLastPlasmaTemp() / SCALE);
         float ticks = Minecraft.getInstance().levelRenderer.ticks + partialTicks;
         float ticksScaledTemp = ticks * scaledTemp;
@@ -72,7 +72,7 @@ public class RenderFusionReactor extends MultiblockTileEntityRenderer<FusionReac
     }
 
     @Override
-    protected boolean shouldRender(TileEntityFusionReactorController tile, FusionReactorMultiblockData multiblock, Vec3 camera) {
+    protected boolean shouldRender(TileEntityFusionReactorController tile, BFReactorMultiblockData multiblock, Vec3 camera) {
         return multiblock.isBurning();
     }
 }

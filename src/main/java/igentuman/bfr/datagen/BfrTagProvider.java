@@ -40,7 +40,6 @@ public class BfrTagProvider extends BaseTagProvider {
               BfrBlocks.FUSION_REACTOR_FRAME,
               BfrBlocks.FUSION_REACTOR_LOGIC_ADAPTER,
               BfrBlocks.LASER_FOCUS_MATRIX,
-              BfrBlocks.REACTOR_GLASS,
               BfrBlocks.IRRADIATOR
         );
         for(BlockRegistryObject<Block, BlockItem> ore : BfrBlocks.ORE_BLOCKS.values()) {
@@ -50,7 +49,6 @@ public class BfrTagProvider extends BaseTagProvider {
 
     private void addHarvestRequirements() {
         addToHarvestTag(BlockTags.MINEABLE_WITH_PICKAXE,
-                BfrBlocks.REACTOR_GLASS,
                 BfrBlocks.LASER_FOCUS_MATRIX,
                 BfrBlocks.FUSION_REACTOR_CONTROLLER,
                 BfrBlocks.FUSION_REACTOR_FRAME,

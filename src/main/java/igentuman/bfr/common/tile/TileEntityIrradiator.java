@@ -1,8 +1,7 @@
 package igentuman.bfr.common.tile;
 
 import igentuman.bfr.common.config.BetterFusionReactorConfig;
-import igentuman.bfr.common.config.BfrConfig;
-import igentuman.bfr.common.content.fusion.FusionReactorMultiblockData;
+import igentuman.bfr.common.content.fusion.BFReactorMultiblockData;
 import igentuman.bfr.common.recipe.impl.IrradiatingIRecipe;
 import igentuman.bfr.common.registries.BfrBlocks;
 import igentuman.bfr.common.registries.BfrRecipes;
@@ -83,7 +82,7 @@ public class TileEntityIrradiator extends TileEntityMachine {
 
     private void cooldownRadiativeFluxSource() {
         if(radiationSource instanceof TileEntityFusionReactorPort) {
-            FusionReactorMultiblockData reactor = ((TileEntityFusionReactorPort)radiationSource).getMultiblock();
+            BFReactorMultiblockData reactor = ((TileEntityFusionReactorPort)radiationSource).getMultiblock();
             if(reactor != null) {
                 if(reactor.isBurning()) {
                     reactor.setPlasmaTemp(reactor.plasmaTemperature*reactorCoolingRate);
@@ -138,7 +137,7 @@ public class TileEntityIrradiator extends TileEntityMachine {
     private double getRadiationFromFusionReactor()
     {
         TileEntityFusionReactorPort port = (TileEntityFusionReactorPort)radiationSource;
-        FusionReactorMultiblockData reactor = port.getMultiblock();
+        BFReactorMultiblockData reactor = port.getMultiblock();
         if(reactor == null) return 0;
         if(!reactor.isBurning()) return  0;
 

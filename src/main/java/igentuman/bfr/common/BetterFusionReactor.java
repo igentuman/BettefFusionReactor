@@ -2,8 +2,6 @@ package igentuman.bfr.common;
 
 import igentuman.bfr.common.events.RadiationEvents;
 import igentuman.bfr.common.registries.*;
-import mekanism.api.recipes.ItemStackToItemStackRecipe;
-import mekanism.common.CommonPlayerTracker;
 import mekanism.common.Mekanism;
 import mekanism.common.base.IModModule;
 import mekanism.common.command.builders.BuildCommand;
@@ -11,14 +9,11 @@ import mekanism.common.config.MekanismModConfig;
 import mekanism.common.lib.Version;
 import mekanism.common.lib.multiblock.MultiblockManager;
 import igentuman.bfr.common.config.BetterFusionReactorConfig;
-import igentuman.bfr.common.content.fusion.FusionReactorCache;
-import igentuman.bfr.common.content.fusion.FusionReactorMultiblockData;
-import igentuman.bfr.common.content.fusion.FusionReactorValidator;
+import igentuman.bfr.common.content.fusion.BFReactorCache;
+import igentuman.bfr.common.content.fusion.BFReactorMultiblockData;
+import igentuman.bfr.common.content.fusion.BFReactorValidator;
 import igentuman.bfr.common.network.BfrPacketHandler;
 import igentuman.bfr.common.registries.BfrBuilders.FusionReactorBuilder;
-import mekanism.common.recipe.MekanismRecipeType;
-import mekanism.common.recipe.lookup.cache.InputRecipeCache;
-import mekanism.common.registration.impl.RecipeTypeRegistryObject;
 import mekanism.generators.common.GeneratorsLang;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
@@ -47,7 +42,7 @@ public class BetterFusionReactor implements IModModule {
      */
     private final BfrPacketHandler packetHandler;
 
-    public static final MultiblockManager<FusionReactorMultiblockData> fusionReactorManager = new MultiblockManager<>("fusionReactor", FusionReactorCache::new, FusionReactorValidator::new);
+    public static final MultiblockManager<BFReactorMultiblockData> fusionReactorManager = new MultiblockManager<>("fusionReactor", BFReactorCache::new, BFReactorValidator::new);
     public BetterFusionReactor() {
         Mekanism.modulesLoaded.add(instance = this);
         BetterFusionReactorConfig.registerConfigs(ModLoadingContext.get());

@@ -49,7 +49,6 @@ import mekanism.generators.common.config.MekanismGeneratorsConfig;
 import mekanism.generators.common.item.ItemHohlraum;
 import mekanism.generators.common.registries.GeneratorsGases;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -59,7 +58,7 @@ import net.minecraftforge.fluids.FluidType;
 
 import static mekanism.generators.common.content.fusion.FusionReactorMultiblockData.FUEL_TAB;
 
-public class FusionReactorMultiblockData extends MultiblockData {
+public class BFReactorMultiblockData extends MultiblockData {
 
     private static final FloatingLong MAX_ENERGY = FloatingLong.createConst(1_000_000_000);
     private static final int MAX_COOLANT = 1_000 * FluidType.BUCKET_VOLUME;
@@ -307,7 +306,7 @@ public class FusionReactorMultiblockData extends MultiblockData {
 
 
 
-    public FusionReactorMultiblockData(TileEntityFusionReactorBlock tile) {
+    public BFReactorMultiblockData(TileEntityFusionReactorBlock tile) {
         super(tile);
         if(BetterFusionReactorConfig.bfr.isLoaded()) {
             BetterFusionReactorConfig.bfr.initFusionCoolants();
@@ -327,7 +326,7 @@ public class FusionReactorMultiblockData extends MultiblockData {
         fluidTanks.add(liquidCoolantTank = VariableCapacityFluidTank.input(this, this::getMaxCoolant, fluid -> BetterFusionReactorConfig.bfr.allowedCoolantFluids.contains(fluid.getFluid()), this));
 
         energyContainers.add(energyContainer = BasicEnergyContainer.output(MAX_ENERGY, this));
-        heatCapacitors.add(heatCapacitor = VariableHeatCapacitor.create(caseHeatCapacity, FusionReactorMultiblockData::getInverseConductionCoefficient,
+        heatCapacitors.add(heatCapacitor = VariableHeatCapacitor.create(caseHeatCapacity, BFReactorMultiblockData::getInverseConductionCoefficient,
                 () -> inverseInsulation, () -> biomeAmbientTemp, this));
         inventorySlots.add(reactorSlot = ReactorInventorySlot.at(stack -> stack.getItem() instanceof ItemHohlraum, this, 80, 39));
     }
