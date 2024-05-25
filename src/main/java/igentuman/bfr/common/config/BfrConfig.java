@@ -32,6 +32,7 @@ public class BfrConfig extends BaseMekanismConfig {
     public final CachedIntValue irradiatorCoolingRate;
     public final CachedIntValue reactionDifficulty;
     public final CachedBooleanValue reactorMeltdown;
+    public final CachedBooleanValue hideMekanismRecipes;
     public final CachedFloatValue reactorExplosionRadius;
 
     public final ForgeConfigSpec.ConfigValue<List<? extends String>> fusionCoolants;
@@ -112,6 +113,8 @@ public class BfrConfig extends BaseMekanismConfig {
         builder.comment("Better Fusion Reactor").push(FUSION_CATEGORY);
         reactionDifficulty = CachedIntValue.wrap(this, builder.comment("How often Reactivity changes and error level change speed. default 10")
                 .defineInRange("reaction_difficulty", 10, 1, 20));
+        hideMekanismRecipes = CachedBooleanValue.wrap(this, builder.comment("Hide original Mekanism Fusion Reactor recipes")
+                .define("hide_original_mek_recipes", true));
         reactorMeltdown = CachedBooleanValue.wrap(this, builder.comment("Explosion when reactor reaches 100% error level")
                 .define("reactor_meltdown", false));
         reactorExplosionRadius = CachedFloatValue.wrap(this, builder.comment("Radius of Explosion (default 4 - TNT size)")

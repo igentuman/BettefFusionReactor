@@ -22,6 +22,7 @@ import java.util.stream.Collectors;
 
 import static igentuman.bfr.client.jei.BfrJEIRecipeType.FUSION;
 import static igentuman.bfr.client.jei.BfrJEIRecipeType.IRRADIATOR;
+import static igentuman.bfr.common.config.BetterFusionReactorConfig.bfr;
 
 
 @JeiPlugin
@@ -56,8 +57,6 @@ public class BfrJEI implements IModPlugin {
     public void registerRecipes(IRecipeRegistration registry) {
         RecipeRegistryHelper.register(registry, FUSION, FusionReactorRecipeCategory.getFusionRecipes());
         RecipeRegistryHelper.register(registry, IRRADIATOR, IrradiatorRecipeCategory.getRecipes());
-
-
         Collection<ItemStack> collection = Arrays.asList(
                 GeneratorsBlocks.LASER_FOCUS_MATRIX,
                 GeneratorsBlocks.FUSION_REACTOR_CONTROLLER,
@@ -65,8 +64,8 @@ public class BfrJEI implements IModPlugin {
                 GeneratorsBlocks.FUSION_REACTOR_PORT,
                 GeneratorsBlocks.FUSION_REACTOR_LOGIC_ADAPTER
         ).stream().map(ItemStack::new).collect(Collectors.toList());
-
-        registry.getIngredientManager().removeIngredientsAtRuntime(VanillaTypes.ITEM_STACK, collection);
+        if(bfr.hideMekanismRecipes.get()) {
+            registry.getIngredientManager().removeIngredientsAtRuntime(VanillaTypes.ITEM_STACK, collection);
+        }
     }
-
 }
