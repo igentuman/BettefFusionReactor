@@ -78,7 +78,7 @@ public class BFReactorMultiblockData extends MultiblockData {
 
     private final Set<ITileHeatHandler> heatHandlers = new ObjectOpenHashSet<>();
     @ContainerSync(tags = "heat")
-    @WrappingComputerMethod(wrapper = ComputerFluidTankWrapper.class, methodNames = {"getCoolant", "getCoolantCapacity", "getCoolantNeeded", "getCoolantFilledPercentage"}, docPlaceholder = "coolant tank")
+    @WrappingComputerMethod(wrapper = ComputerChemicalTankWrapper.class, methodNames = {"getCoolant", "getCoolantCapacity", "getCoolantNeeded", "getCoolantFilledPercentage"}, docPlaceholder = "coolant tank")
     public IGasTank gasCoolantTank;
 
     @ContainerSync
@@ -89,7 +89,7 @@ public class BFReactorMultiblockData extends MultiblockData {
     public IHeatCapacitor heatCapacitor;
 
     @ContainerSync(tags = "heat")
-    @WrappingComputerMethod(wrapper = ComputerFluidTankWrapper.class, methodNames = {"getCoolant", "getCoolantCapacity", "getCoolantNeeded", "getCoolantFilledPercentage"}, docPlaceholder = "cold coolant tank")
+    @WrappingComputerMethod(wrapper = ComputerFluidTankWrapper.class, methodNames = {"getLiquidCoolant", "getLiquidCoolantCapacity", "getLiquidCoolantNeeded", "getLiquidCoolantFilledPercentage"}, docPlaceholder = "cold coolant tank")
     public IExtendedFluidTank liquidCoolantTank;
     @ContainerSync(tags = "heat")
     @WrappingComputerMethod(wrapper = ComputerChemicalTankWrapper.class, methodNames = {"getSteam", "getSteamCapacity", "getSteamNeeded", "getSteamFilledPercentage"}, docPlaceholder = "hot coolant tank")
@@ -297,7 +297,7 @@ public class BFReactorMultiblockData extends MultiblockData {
     }
 
     @ComputerMethod(nameOverride = "adjustReactivity")
-    private void computerAdjustReactivity(float val) throws ComputerException {
+    public void computerAdjustReactivity(float val) throws ComputerException {
         if(val > 100 || val < -100) {
             throw new ComputerException("Adjustment must be float value in range [-100 .. 100]");
         }
@@ -676,7 +676,7 @@ public class BFReactorMultiblockData extends MultiblockData {
 
     //Computer related methods
     @ComputerMethod(nameOverride = "setInjectionRate")
-    private void computerSetInjectionRate(int rate) throws ComputerException {
+    public void computerSetInjectionRate(int rate) throws ComputerException {
         if (rate < 0 || rate > MAX_INJECTION) {
             //Validate bounds even though we can clamp
             throw new ComputerException("Injection Rate '%d' is out of range must be an even number between 0 and %d. (Inclusive)", rate, MAX_INJECTION);
@@ -688,12 +688,12 @@ public class BFReactorMultiblockData extends MultiblockData {
     }
 
     @ComputerMethod
-    private FloatingLong getPassiveGeneration(boolean active) {
+    public FloatingLong getPassiveGeneration(boolean active) {
         return getPassiveGeneration(active, false);
     }
 
     @ComputerMethod
-    private FloatingLong getProductionRate() {
+    public FloatingLong getProductionRate() {
         return getPassiveGeneration(false, false);
     }
     //End computer related methods

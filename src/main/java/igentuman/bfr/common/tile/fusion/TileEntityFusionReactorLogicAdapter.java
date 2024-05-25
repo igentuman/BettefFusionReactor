@@ -217,7 +217,7 @@ public class TileEntityFusionReactorLogicAdapter extends TileEntityFusionReactor
 
     //Methods relating to IComputerTile
     @ComputerMethod
-    private void setActiveCooledLogic(boolean active) {
+    public void setActiveCooledLogic(boolean active) {
         if (activeCooled != active) {
             nextMode();
         }

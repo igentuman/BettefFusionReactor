@@ -128,12 +128,12 @@ public class TileEntityFusionReactorPort extends TileEntityFusionReactorBlock im
     }
 
     @ComputerMethod
-    private boolean getMode() {
+    public boolean getMode() {
         return getActive();
     }
 
     @ComputerMethod
-    private void setMode(boolean output) {
+    public void setMode(boolean output) {
         setActive(output);
     }
     //End methods IComputerTile

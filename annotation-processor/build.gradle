@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+}
+
+group 'igentuman.annotation-processor'
+version '2.0.0'
+java.toolchain.languageVersion = JavaLanguageVersion.of("${java_version}")
+
+repositories {
+    def repo = maven {
+        name 'CraftTweaker'
+        url 'https://maven.blamejared.com'
+    }
+    exclusiveContent {
+        forRepositories(repo)
+        filter { InclusiveRepositoryContentDescriptor f ->
+            f.includeGroup 'com.blamejared.crafttweaker'
+            f.includeGroup 'org.openzen.zencode'
+        }
+    }
+    mavenCentral()
+}
+
+dependencies {
+   // implementation "com.blamejared.crafttweaker:CraftTweaker-forge-${minecraft_version}:${crafttweaker_version}"
+    //Version of GSON used by vanilla (and thus packed and already downloaded)
+    implementation group: 'com.google.code.gson', name: 'gson', version: '2.10'
+    implementation "com.squareup:javapoet:1.13.0"
+}

@@ -118,14 +118,13 @@ repositories {
 
 dependencies {
     minecraft "net.neoforged:forge:${minecraft_version}-${forge_version}"
-
+    annotationProcessor project(":annotation-processor")
     implementation fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
     implementation fg.deobf("mekanism:Mekanism:${mekanism_version}")// core
     implementation fg.deobf("mekanism:Mekanism:${mekanism_version}:generators")// Mekanism: Generators
     implementation(fg.deobf("curse.maven:cc-tweaked-282001:${cc_tweaked_id}")) {
         transitive = false
     }
-
    // compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"))
     //compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}"))
     // at runtime, use the full JEI jar for Forge

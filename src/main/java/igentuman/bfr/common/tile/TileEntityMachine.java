@@ -133,7 +133,7 @@ public abstract class TileEntityMachine extends TileEntityProgressMachine<ItemSt
 
     //Methods relating to IComputerTile
     @ComputerMethod
-    private FloatingLong getEnergyUsage() {
+    public FloatingLong getEnergyUsage() {
         return getActive() ? energyContainer.getEnergyPerTick() : FloatingLong.ZERO;
     }
     //End methods IComputerTile
