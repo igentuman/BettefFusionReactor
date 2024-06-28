@@ -13,6 +13,7 @@ import igentuman.bfr.common.tile.reactor.TileEntityReactorGlass;
 import igentuman.bfr.common.tile.reactor.TileEntityReactorLaserFocusMatrix;
 import igentuman.bfr.common.tile.reactor.TileEntityReactorLogicAdapter;
 import igentuman.bfr.common.tile.reactor.TileEntityReactorPort;
+import mekanism.generators.common.MekanismGenerators;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.tileentity.TileEntity;
@@ -79,6 +80,9 @@ public class BFRCommonProxy implements IGuiProvider {
     @Override
     public Container getServerGui(int ID, EntityPlayer player, World world, BlockPos pos) {
         TileEntity tileEntity = world.getTileEntity(pos);
+        if(tileEntity instanceof mekanism.generators.common.tile.reactor.TileEntityReactorController) {
+            return MekanismGenerators.proxy.getServerGui(ID, player, world, pos);
+        }
         switch (ID) {
             case 10:
                 return new ContainerReactorController(player.inventory, (TileEntityReactorController) tileEntity);
@@ -91,7 +95,6 @@ public class BFRCommonProxy implements IGuiProvider {
             case 15:
                 return new ContainerNull(player, (TileEntityContainerBlock) tileEntity);
         }
-
-        return null;
+        return MekanismGenerators.proxy.getServerGui(ID, player, world, pos);
     }
 }

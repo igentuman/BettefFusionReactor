@@ -9,6 +9,7 @@ import mekanism.client.render.MekanismRenderer;
 import igentuman.bfr.common.BFRBlocks;
 import igentuman.bfr.common.BFRCommonProxy;
 import igentuman.bfr.common.BFR;
+import mekanism.generators.common.MekanismGenerators;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.IStateMapper;
@@ -61,7 +62,9 @@ public class BFRClientProxy extends BFRCommonProxy {
     @Override
     public GuiScreen getClientGui(int ID, EntityPlayer player, World world, BlockPos pos) {
         TileEntity tileEntity = world.getTileEntity(pos);
-
+        if(tileEntity instanceof mekanism.generators.common.tile.reactor.TileEntityReactorController) {
+            return (GuiScreen) MekanismGenerators.proxy.getClientGui(ID, player, world, pos);
+        }
         switch (ID) {
             case 10:
                 return new GuiReactorController(player.inventory, (TileEntityReactorController) tileEntity);
@@ -81,7 +84,7 @@ public class BFRClientProxy extends BFRCommonProxy {
                 return new GuiReactorLogicAdapterOutput(player.inventory, (TileEntityReactorLogicAdapter) tileEntity);
         }
 
-        return null;
+        return (GuiScreen) MekanismGenerators.proxy.getClientGui(ID, player, world, pos);
     }
 
     @SubscribeEvent
