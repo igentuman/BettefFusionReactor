@@ -114,17 +114,28 @@ repositories {
             includeGroup 'mekanism'
         }
     }
+    maven {
+        url "https://maven.architectury.dev"
+        content {
+            includeGroup 'dev.architectury'
+        }
+    }
 }
 
 dependencies {
     minecraft "net.neoforged:forge:${minecraft_version}-${forge_version}"
     annotationProcessor project(":annotation-processor")
+    implementation fg.deobf("dev.architectury:architectury-forge:${architectury_version}")
+
     implementation fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
     implementation fg.deobf("mekanism:Mekanism:${mekanism_version}")// core
     implementation fg.deobf("mekanism:Mekanism:${mekanism_version}:generators")// Mekanism: Generators
     implementation(fg.deobf("curse.maven:cc-tweaked-282001:${cc_tweaked_id}")) {
         transitive = false
     }
+    implementation fg.deobf("curse.maven:sedna-511276:${sedna_version}")
+    implementation fg.deobf("curse.maven:markdownmanual-502485:${md_version}")
+    implementation fg.deobf("curse.maven:oc2r-1037738:${oc2_version}")
    // compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"))
     //compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}"))
     // at runtime, use the full JEI jar for Forge
