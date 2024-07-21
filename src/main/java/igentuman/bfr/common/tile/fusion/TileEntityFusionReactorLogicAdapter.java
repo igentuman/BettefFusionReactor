@@ -1,11 +1,14 @@
 package igentuman.bfr.common.tile.fusion;
 
 import javax.annotation.Nonnull;
+
+import igentuman.bfr.common.compat.oc2.FusionLogicPortOC2Device;
 import mekanism.api.NBTConstants;
 import mekanism.api.math.MathUtils;
 import mekanism.api.text.EnumColor;
 import mekanism.api.text.IHasTranslationKey;
 import mekanism.api.text.ILangEntry;
+import mekanism.common.capabilities.resolver.BasicCapabilityResolver;
 import mekanism.common.integration.computer.annotation.ComputerMethod;
 import mekanism.common.inventory.container.MekanismContainer;
 import mekanism.common.inventory.container.sync.SyncableBoolean;
@@ -29,6 +32,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.event.ForgeEventFactory;
+import net.minecraftforge.fml.ModList;
 
 import java.util.ArrayList;
 import java.util.EnumSet;
@@ -41,6 +45,9 @@ public class TileEntityFusionReactorLogicAdapter extends TileEntityFusionReactor
 
     public TileEntityFusionReactorLogicAdapter(BlockPos pos, BlockState state) {
         super(BfrBlocks.FUSION_REACTOR_LOGIC_ADAPTER, pos, state);
+        if(ModList.get().isLoaded("oc2r")) {
+            addCapabilityResolver(BasicCapabilityResolver.constant(FusionLogicPortOC2Device.DEVICE_CAPABILITY, FusionLogicPortOC2Device.createDevice(this)));
+        }
     }
 
     @Override

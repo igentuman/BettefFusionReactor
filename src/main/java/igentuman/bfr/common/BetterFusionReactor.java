@@ -1,5 +1,6 @@
 package igentuman.bfr.common;
 
+import igentuman.bfr.common.compat.oc2.OC2BlockDeviceProvider;
 import igentuman.bfr.common.events.RadiationEvents;
 import igentuman.bfr.common.registries.*;
 import mekanism.common.Mekanism;
@@ -15,9 +16,12 @@ import igentuman.bfr.common.content.fusion.BFReactorValidator;
 import igentuman.bfr.common.network.BfrPacketHandler;
 import igentuman.bfr.common.registries.BfrBuilders.FusionReactorBuilder;
 import mekanism.generators.common.GeneratorsLang;
+import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
@@ -61,6 +65,9 @@ public class BetterFusionReactor implements IModModule {
         //Set our version number to match the mods.toml file, which matches the one in our build.gradle
         versionNumber = new Version(ModLoadingContext.get().getActiveContainer());
         packetHandler = new BfrPacketHandler();
+        if(ModList.get().isLoaded("oc2r")) {
+            OC2BlockDeviceProvider.init();
+        }
     }
 
     public static BfrPacketHandler packetHandler() {
@@ -69,6 +76,10 @@ public class BetterFusionReactor implements IModModule {
 
     public static ResourceLocation rl(String path) {
         return new ResourceLocation(BetterFusionReactor.MODID, path);
+    }
+
+    public static <T> ResourceKey<Registry<T>> rk(final String name) {
+        return ResourceKey.createRegistryKey(new ResourceLocation(MODID, name));
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {

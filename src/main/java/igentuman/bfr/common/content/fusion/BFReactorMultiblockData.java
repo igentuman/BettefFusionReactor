@@ -122,6 +122,10 @@ public class BFReactorMultiblockData extends MultiblockData {
     @WrappingComputerMethod(wrapper = ComputerIInventorySlotWrapper.class, methodNames = "getHohlraum", docPlaceholder = "Hohlraum slot")
     private final ReactorInventorySlot reactorSlot;
 
+    public ReactorInventorySlot getReactorSlot() {
+        return reactorSlot;
+    }
+
     private boolean clientBurning;
     private double clientTemp;
 
